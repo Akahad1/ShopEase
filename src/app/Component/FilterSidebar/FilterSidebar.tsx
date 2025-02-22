@@ -1,24 +1,25 @@
 "use client";
 
-import { useState } from "react";
-
-const FilterSidebar = () => {
-  const [selectedCategory, setSelectedCategory] = useState("Vegetables");
-  const [priceRange, setPriceRange] = useState([50, 1500]);
-  const [rating, setRating] = useState(4);
-
-  const categories = [
-    "Fresh Fruit",
-    "Vegetables",
-    "Cooking",
-    "Snacks",
-    "Beverages",
-    "Beauty & Health",
-    "Bread & Bakery",
-  ];
+interface FilterSidebarProps {
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
+  selectedCategory: string;
+  priceRange: [number, number];
+  setPriceRange: React.Dispatch<React.SetStateAction<[number, number]>>;
+  rating: number | null;
+  setRating: React.Dispatch<React.SetStateAction<number | null>>;
+}
+const FilterSidebar: React.FC<FilterSidebarProps> = ({
+  setSelectedCategory,
+  selectedCategory,
+  priceRange,
+  setPriceRange,
+  rating,
+  setRating,
+}) => {
+  const categories = ["Fruits", "Vegetables", "Cookies", "Bread"];
 
   return (
-    <div className="p-4 md:p-6 bg-white shadow-lg rounded-lg w-full md:w-1/4 lg:w-1/2 lg:ml-10 ml-2 mr-2 lg:mt-10  mt-4 md:static top-0 left-0 md:top-auto md:left-auto z-50 md:z-auto">
+    <div className="p-4 md:p-6 bg-white shadow-lg rounded-lg w-full md:w-1/4 lg:w-2/3 lg:ml-10 ml-2 mr-2  md:static top-0 left-0 md:top-auto md:left-auto z-50 md:z-auto">
       {/* <button className="md:hidden w-full bg-green-500 text-white p-2 rounded-lg">
         Filter
       </button> */}
@@ -45,8 +46,8 @@ const FilterSidebar = () => {
           <h2 className="text-lg font-semibold">Price</h2>
           <input
             type="range"
-            min="50"
-            max="1500"
+            min="0"
+            max="15"
             value={priceRange[0]}
             onChange={(e) =>
               setPriceRange([parseInt(e.target.value), priceRange[1]])

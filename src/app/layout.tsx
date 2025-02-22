@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { Providers } from "./Component/Providers/Providers";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "ShopeEase",
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Toaster />
         <Providers>{children}</Providers>
       </body>
     </html>

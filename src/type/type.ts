@@ -8,3 +8,7 @@ export interface TProduct {
   details: string;
   categories: string;
 }
+export type TQureyParam = {
+  name: string;
+  value: string;
+};
