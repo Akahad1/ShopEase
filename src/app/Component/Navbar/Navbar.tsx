@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FaShoppingBag, FaSearch, FaChevronDown } from "react-icons/fa";
 
 const Navbar = () => {
+  const email = localStorage.getItem("email");
   return (
     <div>
       <nav className="flex items-center justify-between py-4 lg:px-8 px-2 md:px-4 bg-white shadow-md">
@@ -58,7 +59,7 @@ const Navbar = () => {
         <Link href="/login" className="lg:flex hidden items-center">
           LogIn
         </Link>
-        <Link href="/dashboard">Dashboard</Link>
+        {email && <Link href="/dashboard">Dashboard</Link>}
       </div>
     </div>
   );

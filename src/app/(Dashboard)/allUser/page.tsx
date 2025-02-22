@@ -1,10 +1,10 @@
-import SignupForm from "@/app/Component/singup/singup";
+import AllUser from "@/app/Component/allUser/allUser";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <SignupForm></SignupForm>
+      <AllUser></AllUser>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
@@ -75,7 +76,9 @@ const CartPage = () => {
                     className="w-12 h-16 rounded"
                   />
                   <div>
-                    <h3 className="font-semibold">{product.name}</h3>
+                    <h3 className="font-semibold text-sm lg:text-xl">
+                      {product.name}
+                    </h3>
                     <p className="text-gray-500">${product.price.toFixed(2)}</p>
                   </div>
                 </div>
@@ -84,7 +87,7 @@ const CartPage = () => {
                     onClick={() =>
                       updateQuantity(product._id, (product.quantity || 1) - 1)
                     }
-                    className="btn btn-sm btn-outline"
+                    className="btn lg:btn-sm btn-xs btn-outline"
                     disabled={(product.quantity || 1) <= 1}
                   >
                     -
@@ -94,17 +97,17 @@ const CartPage = () => {
                     onClick={() =>
                       updateQuantity(product._id, (product.quantity || 1) + 1)
                     }
-                    className="btn btn-sm btn-outline"
+                    className="btn lg:btn-sm btn-xs btn-outline"
                   >
                     +
                   </button>
                 </div>
-                <p className="font-semibold">
+                <p className="font-semibold text-sm lg:text-xl ml-2">
                   ${(product.price * (product.quantity || 1)).toFixed(2)}
                 </p>
                 <button
                   onClick={() => removeProduct(product._id)}
-                  className="btn btn-sm btn-error"
+                  className="btn lg:btn-sm btn-xs ml-2 btn-error"
                 >
                   ✕
                 </button>
@@ -127,9 +130,12 @@ const CartPage = () => {
               <span>Total:</span>
               <span>${subtotal.toFixed(2)}</span>
             </div>
-            <button className="btn btn-success w-full mt-4">
-              Proceed to Checkout
-            </button>
+
+            <Link href="/Checkout">
+              <button className="btn btn-success w-full mt-4">
+                Proceed to Checkout
+              </button>
+            </Link>
           </div>
         </div>
       )}

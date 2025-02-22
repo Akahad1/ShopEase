@@ -1,10 +1,10 @@
-import SignupForm from "@/app/Component/singup/singup";
+import OrderHistory from "@/app/Component/orderHistory/OrderHistory";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <SignupForm></SignupForm>
+      <OrderHistory></OrderHistory>
     </div>
   );
 };

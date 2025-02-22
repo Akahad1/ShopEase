@@ -37,6 +37,72 @@ const ExpenseApi = baseApi.injectEndpoints({
         };
       },
     }),
+    crateOrder: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/order`,
+          method: "POST",
+          body: data,
+        };
+      },
+    }),
+    getOrder: builder.query({
+      query: (args) => {
+        const params = new URLSearchParams();
+        if (args) {
+          args.forEach((item: TQureyParam) => {
+            params.append(item.name, item.value as string);
+          });
+        }
+        return {
+          url: `/order`,
+          method: "GET",
+          params,
+        };
+      },
+    }),
+    getuser: builder.query({
+      query: (args) => {
+        const params = new URLSearchParams();
+        if (args) {
+          args.forEach((item: TQureyParam) => {
+            params.append(item.name, item.value as string);
+          });
+        }
+        return {
+          url: `/user`,
+          method: "GET",
+          params,
+        };
+      },
+    }),
+    getALluser: builder.query({
+      query: () => {
+        return {
+          url: `/user/alluser`,
+          method: "GET",
+        };
+      },
+    }),
+    getAllorder: builder.query({
+      query: () => {
+        return {
+          url: `/order/allorder`,
+          method: "GET",
+        };
+      },
+      providesTags: ["order"],
+    }),
+    updateOrder: builder.mutation({
+      query: ({ id, statuses }) => {
+        return {
+          url: `/order/${id}`,
+          method: "PUT",
+          body: { statuses },
+        };
+      },
+      invalidatesTags: ["order"],
+    }),
   }),
 });
 
@@ -44,4 +110,10 @@ export const {
   useGetAllproductQuery,
   useCreateUserMutation,
   useLoginUserMutation,
+  useGetOrderQuery,
+  useCrateOrderMutation,
+  useGetuserQuery,
+  useGetALluserQuery,
+  useGetAllorderQuery,
+  useUpdateOrderMutation,
 } = ExpenseApi;
